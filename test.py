@@ -1,18 +1,26 @@
-import re
+# import re
 
-string = 'DrSueDVM✞ 🙏🏼for 🇺🇸 ‏@DrSueDVM  3h3 hours ago
-Praying that whoever replaces Obama can prevent economic collapse of America.'
-# string = str(string.encode('unicode_escape'))
+
+# regex = r'(\-|\:|\!|\%|\*|\)|\(|\+|\-|\/|\$|\'|\"|\*|\[|\]|\{|\}|\#|\^|\,|\.)+'
+# entity_regex = r'&\w+;'
+# string = "@mlauer #journalism or #stateoftheunion #Election2016 #trump #realitytv #lightweight\u2026 https://t.co/KdPGds1Xmv"
+
+# string = re.sub(r'[^\x00-\x7F]+','', string)
 # print(string)
-myre = re.compile(u'['
-    u'\U0001F300-\U0001F64F'
-    u'\U0001F680-\U0001F6FF'
-    u'\u2600-\u26FF\u2700-\u27BF]+', 
-    re.UNICODE)
 
-m = myre.findall(string)
-if m:
-	print('match')
-	print(m)
-else:
-	print('no match')
+# # pattern = re.compile(entity_regex)
+# # match = pattern.findall(string)
+
+# # if match:
+# # 	print(match)
+# # else:
+# # 	print("no match")
+
+# # print("final: ", pattern.sub('',string))
+
+_count = 0
+def counter(count):
+	count = 5
+
+counter(_count)
+print(_count)
