@@ -70,9 +70,12 @@ date_handler = lambda obj: (
 	else None
 )
 
+# If results only below a specific ID are, set max_id to that ID.
+# else default to no upper limit, start from the most recent tweet matching the search query.
+
 def load_document(tweets, topic, tweet_count):
 	document = []
-	count = tweet_count
+	max_id = tweets[-1].id
 	for tweet in tweets:
 
 		# to remove retweets
@@ -80,7 +83,7 @@ def load_document(tweets, topic, tweet_count):
 			if tweet.retweeted_status:
 				continue
 		except Exception:
-			count += 1
+			tweet_count += 1
 
 			tweet_data = {}
 			tweet_data['topic'] = topic
@@ -138,15 +141,33 @@ def load_document(tweets, topic, tweet_count):
 			# appending the json to a document
 			document.append(json.dumps(tweet_data, default=date_handler))
 
-	return document, count
+	return document, tweet_count, max_id
 
 _tweet_count = 0
+eng_document = []
+
+id_file = open('id_file.txt','r')
+max_id = int(id_file.read())
+id_file.close()
 
 # english
-while _tweet_count < 100:
-	tweets = api.search(q="#SDF",lang="en",rpp=100)
-	eng_document, _tweet_count = load_document(tweets, 'World News', _tweet_count)
-	print('Retrieved: ',_tweet_count,' tweets')
+while _tweet_count < 1000:
+
+	try:
+		if max_id <= 0:
+			tweets = api.search(q="#iphone7",lang="en")
+		else:
+			tweets = api.search(q="#iphone7",lang="en",max_id=str(max_id - 1))
+	except Exception as e:
+		print("Error encontered: ",e)
+		print('Exiting now')
+		break
+
+	if tweets:
+		eng_document, _tweet_count, max_id = load_document(tweets,'Tech', _tweet_count)
+	else:
+		print('No tweets')
+
 	target = open('index1_eng.jsonl','a')
 
 	for tweet in eng_document:
@@ -155,15 +176,12 @@ while _tweet_count < 100:
 
 	target.close()
 
-# for doc in eng_document:
-# 	document = json.loads(doc)
-# 	print('Text: ',document['tweet_text'],end='\n')
-# 	print('url: ',document['tweet_urls'],end='\n')
-# 	print('hashtags: ',document['tweet_hashtags'],end='\n')
-# 	print('mentions: ',document['tweet_mentions'],end='\n')
-# 	print('created time: ',document['tweet_date'],end='\n')
-# 	print('emoticons: ',document['tweet_emoticons'],end='\n')
-# 	print('Shortened text:',document['text_en'],end='\n\n')
+print('Retrieved: ',_tweet_count,' tweets')
+print('\nLast max_id: ',max_id)
+id_file = open('id_file.txt','w')
+id_file.write(str(max_id))
+id_file.close()
+
 
 # streaming data
 class Streamer(tweepy.StreamListener):
@@ -178,7 +196,7 @@ class Streamer(tweepy.StreamListener):
 		Streamer.streamed_data.append(data)
 
 		Streamer._count += 1
-		if Streamer._count == 10:
+		if Streamer._count == 200:
 			return False
 
     #returning False in on_data disconnects the stream
@@ -189,14 +207,16 @@ class Streamer(tweepy.StreamListener):
 def stream_twitter():
 	twitterStream = tweepy.Stream(auth = api.auth, listener=Streamer())
 	# twitterStream.filter(track=['#SDF','@syrianrefugeeun','#PrayForSyria','#SyrianRefugees'])
-	twitterStream.filter(track=['#SyrianRefugees'])
+	# twitterStream.filter(track=['#usopen'])
+	# twitterStream.filter(track=['#apple'])
+	twitterStream.filter(track=['gameofdaily'])
 	return Streamer.streamed_data
 
 # _tweet_count = 0
 # print('Starting to stream!\n')
 # tweets = stream_twitter()
 # target = open('index1_eng.jsonl','a')
-# document,_tweet_count = load_document(tweets, 'World News',_tweet_count)
+# document,_tweet_count = load_document(tweets, 'T.V. Series',_tweet_count)
 
 # for tweet in document:
 # 	target.write(tweet)
@@ -204,3 +224,17 @@ def stream_twitter():
 
 # target.close()
 # print('\nTotal streamed tweets: ',_tweet_count)
+
+
+#========================================================================================
+
+
+# for doc in eng_document:
+# 	document = json.loads(doc)
+# 	print('Text: ',document['tweet_text'],end='\n')
+# 	print('url: ',document['tweet_urls'],end='\n')
+# 	print('hashtags: ',document['tweet_hashtags'],end='\n')
+# 	print('mentions: ',document['tweet_mentions'],end='\n')
+# 	print('created time: ',document['tweet_date'],end='\n')
+# 	print('emoticons: ',document['tweet_emoticons'],end='\n')
+# 	print('Shortened text:',document['text_en'],end='\n\n')
