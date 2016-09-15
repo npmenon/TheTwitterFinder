@@ -140,7 +140,11 @@ def load_document(tweets, topic, tweet_count):
 	return document, tweet_count, max_id
 
 # init
-topic = 'Politics'
+# topic = 'T.V. Series'
+# topic = 'Sports'
+# topic = 'Politics'
+# topic = 'Tech'
+topic = 'World News'
 _tweet_count = 0
 document = []
 
@@ -149,14 +153,14 @@ id_file = open('max_id_file.txt','r')
 max_id = int(id_file.read())
 id_file.close()
 
-# english
-while _tweet_count < 1000:
+# Spanish
+while _tweet_count < 400:
 
 	try:
 		if max_id <= 0:
-			tweets = api.search(q="hillary OR trump",lang="es")
+			tweets = api.search(q="siria",lang="es")
 		else:
-			tweets = api.search(q="hillary OR trump",lang="es",max_id=str(max_id - 1))
+			tweets = api.search(q="siria",lang="es",max_id=str(max_id - 1))
 	except Exception as e:
 		print("Error encontered: ",e)
 		print('Exiting now')

@@ -57,8 +57,6 @@ def tweet_filter(text):
 
 	return text, emojis
 
-print(tweet_filter(''))
-
 date_handler = lambda obj: (
 	obj.isoformat()
 	if isinstance(obj, datetime.datetime)
@@ -140,7 +138,11 @@ def load_document(tweets, topic, tweet_count):
 	return document, tweet_count, max_id
 
 # init
+# topic = 'T.V. Series'
+# topic = 'Sports'
 topic = 'Politics'
+# topic = 'Tech'
+# topic = 'World News'
 _tweet_count = 0
 document = []
 
@@ -150,13 +152,13 @@ max_id = int(id_file.read())
 id_file.close()
 
 # Crawls Turkish tweets
-while _tweet_count < 1000:
+while _tweet_count < 500:
 
 	try:
 		if max_id <= 0:
-			tweets = api.search(q="hillary,trump",lang="tr")
+			tweets = api.search(q="bize seçim",lang="tr")
 		else:
-			tweets = api.search(q="hillary,trump",lang="tr",max_id=str(max_id - 1))
+			tweets = api.search(q="bize seçim",lang="tr",max_id=str(max_id - 1))
 	except Exception as e:
 		print("Error encontered: ",e)
 		print('Exiting now')

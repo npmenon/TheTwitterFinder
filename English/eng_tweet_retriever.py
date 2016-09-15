@@ -144,46 +144,50 @@ def load_document(tweets, topic, tweet_count):
 	return document, tweet_count, max_id
 
 # init
+topic = 'T.V. Series'
+topic = 'Sports'
 topic = 'Politics'
+topic = 'Tech'
+topic = 'World News'
 _tweet_count = 0
 document = []
 
-# max_id of tweets retrieved from a file
-id_file = open('max_id_file.txt','r')
-max_id = int(id_file.read())
-id_file.close()
+# # max_id of tweets retrieved from a file
+# id_file = open('max_id_file.txt','r')
+# max_id = int(id_file.read())
+# id_file.close()
 
-# english
-while _tweet_count < 1000:
+# # english
+# while _tweet_count < 1000:
 
-	try:
-		if max_id <= 0:
-			tweets = api.search(q="#presidential",lang="en")
-		else:
-			tweets = api.search(q="#presidential",lang="en",max_id=str(max_id - 1))
-	except Exception as e:
-		print("Error encontered: ",e)
-		print('Exiting now')
-		break
+# 	try:
+# 		if max_id <= 0:
+# 			tweets = api.search(q="#presidential",lang="en")
+# 		else:
+# 			tweets = api.search(q="#presidential",lang="en",max_id=str(max_id - 1))
+# 	except Exception as e:
+# 		print("Error encontered: ",e)
+# 		print('Exiting now')
+# 		break
 
-	if tweets:
-		document, _tweet_count, max_id = load_document(tweets,topic, _tweet_count)
-	else:
-		print('No tweets')
+# 	if tweets:
+# 		document, _tweet_count, max_id = load_document(tweets,topic, _tweet_count)
+# 	else:
+# 		print('No tweets')
 
-	target = open('index1_eng.jsonl','a')
+# 	target = open('index1_eng.jsonl','a')
 
-	for tweet in document:
-		target.write(tweet)
-		target.write('\n')
+# 	for tweet in document:
+# 		target.write(tweet)
+# 		target.write('\n')
 
-	target.close()
+# 	target.close()
 
-print('Retrieved: ',_tweet_count,' tweets')
-print('\nLast max_id: ',max_id)
-id_file = open('max_id_file.txt','w')
-id_file.write(str(max_id))
-id_file.close()
+# print('Retrieved: ',_tweet_count,' tweets')
+# print('\nLast max_id: ',max_id)
+# id_file = open('max_id_file.txt','w')
+# id_file.write(str(max_id))
+# id_file.close()
 
 
 # streaming data
@@ -199,7 +203,7 @@ class Streamer(tweepy.StreamListener):
 		Streamer.streamed_data.append(data)
 
 		Streamer._count += 1
-		if Streamer._count == 200:
+		if Streamer._count == 500:
 			return False
 
     #returning False in on_data disconnects the stream
@@ -212,21 +216,21 @@ def stream_twitter():
 	# twitterStream.filter(track=['#SDF','@syrianrefugeeun','#PrayForSyria','#SyrianRefugees'])
 	# twitterStream.filter(track=['#usopen'])
 	# twitterStream.filter(track=['#apple'])
-	twitterStream.filter(track=['gameofdaily'])
+	twitterStream.filter(track=['#usopen'])
 	return Streamer.streamed_data
 
 
-# print('Starting to stream!\n')
-# tweets = stream_twitter()
-# target = open('index1_eng.jsonl','a')
-# document,_tweet_count = load_document(tweets, topic, _tweet_count)
+print('Starting to stream!\n')
+tweets = stream_twitter()
+target = open('index1_eng.jsonl','a')
+document,_tweet_count, max_id = load_document(tweets, topic, _tweet_count)
 
-# for tweet in document:
-# 	target.write(tweet)
-# 	target.write('\n')
+for tweet in document:
+	target.write(tweet)
+	target.write('\n')
 
-# target.close()
-# print('\nTotal streamed tweets: ',_tweet_count)
+target.close()
+print('\nTotal streamed tweets: ',_tweet_count)
 
 
 #========================================================================================
