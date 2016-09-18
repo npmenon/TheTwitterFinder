@@ -61,11 +61,9 @@ def tweets(fname):
 	# "tweet_loc": "[37.090240, -95.712891]"
 
 	locPatter2 = re.compile(r'(\"tweet_loc\":\s?)(\[)(\-?\d+\.\d+)(\,\s?)(\-?\d+\.\d+)(\])')
-	match = locPatter2.findall(text2)
-	# print(match)
 	text = locPatter2.sub(r'\1"\5\4\3"',text2)
-	# print(text)
-
+	# match = locPatter2.findall(text2)
+	# print(match)
 
 	# writing the changes to file
 	f = open(fname,'w')
@@ -74,5 +72,5 @@ def tweets(fname):
 
 	print('Successful....')
 
-print(topic_count("index2_turkish.jsonl"))
-# print(tweets("index2_turkish.jsonl"))
+# topic_count("index2_turkish.jsonl")
+tweets("index2_turkish.jsonl")

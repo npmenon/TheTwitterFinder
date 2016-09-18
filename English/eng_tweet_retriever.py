@@ -145,49 +145,63 @@ def load_document(tweets, topic, tweet_count):
 
 # init
 topic = 'T.V. Series'
-topic = 'Sports'
-topic = 'Politics'
-topic = 'Tech'
-topic = 'World News'
+# topic = 'Sports'
+# topic = 'Politics'
+# topic = 'Tech'
+# topic = 'World News'
 _tweet_count = 0
 document = []
 
 # # max_id of tweets retrieved from a file
-# id_file = open('max_id_file.txt','r')
-# max_id = int(id_file.read())
-# id_file.close()
+id_file = open('max_id_file.txt','r')
+max_id = int(id_file.read())
+id_file.close()
 
-# # english
-# while _tweet_count < 1000:
+times = 0	
+total_tweets = 0
+error = False
+# english
+while True:
+	_tweet_count = 0
+	while _tweet_count < 1000:
+		try:
+			if max_id <= 0:
+				tweets = api.search(q="apple iphone",lang="en")
+			else:
+				tweets = api.search(q="apple iphone",lang="en",max_id=str(max_id - 1))
+		except Exception as e:
+			print("Error encontered: ",e)
+			print('Exiting now')
+			error = True
+			break
 
-# 	try:
-# 		if max_id <= 0:
-# 			tweets = api.search(q="#presidential",lang="en")
-# 		else:
-# 			tweets = api.search(q="#presidential",lang="en",max_id=str(max_id - 1))
-# 	except Exception as e:
-# 		print("Error encontered: ",e)
-# 		print('Exiting now')
-# 		break
+		if tweets:
+			document, _tweet_count, max_id = load_document(tweets,topic, _tweet_count)
+		else:
+			print('No tweets')
 
-# 	if tweets:
-# 		document, _tweet_count, max_id = load_document(tweets,topic, _tweet_count)
-# 	else:
-# 		print('No tweets')
+		target = open('index1_eng.jsonl','a')
 
-# 	target = open('index1_eng.jsonl','a')
+		for tweet in document:
+			target.write(tweet)
+			target.write('\n')
 
-# 	for tweet in document:
-# 		target.write(tweet)
-# 		target.write('\n')
+		target.close()
 
-# 	target.close()
+	times += 1
+	if times <= 5 and not error:
+		total_tweets += _tweet_count
+		print("Got {} tweets...Going to sleep for 12min.... :)".format(_tweet_count))
+		time.sleep(800)
+		print("Woke up :P ... Back to collecting more tweets!!")
+	else:
+		break
 
-# print('Retrieved: ',_tweet_count,' tweets')
-# print('\nLast max_id: ',max_id)
-# id_file = open('max_id_file.txt','w')
-# id_file.write(str(max_id))
-# id_file.close()
+print('\nRetrieved in total: ',total_tweets,' tweets')
+print('\nLast max_id: ',max_id)
+id_file = open('max_id_file.txt','w')
+id_file.write(str(max_id))
+id_file.close()
 
 
 # streaming data
@@ -220,17 +234,17 @@ def stream_twitter():
 	return Streamer.streamed_data
 
 
-print('Starting to stream!\n')
-tweets = stream_twitter()
-target = open('index1_eng.jsonl','a')
-document,_tweet_count, max_id = load_document(tweets, topic, _tweet_count)
+# print('Starting to stream!\n')
+# tweets = stream_twitter()
+# target = open('index1_eng.jsonl','a')
+# document,_tweet_count, max_id = load_document(tweets, topic, _tweet_count)
 
-for tweet in document:
-	target.write(tweet)
-	target.write('\n')
+# for tweet in document:
+# 	target.write(tweet)
+# 	target.write('\n')
 
-target.close()
-print('\nTotal streamed tweets: ',_tweet_count)
+# target.close()
+# print('\nTotal streamed tweets: ',_tweet_count)
 
 
 #========================================================================================

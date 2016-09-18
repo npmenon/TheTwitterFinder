@@ -138,9 +138,9 @@ def load_document(tweets, topic, tweet_count):
 	return document, tweet_count, max_id
 
 # init
-# topic = 'T.V. Series'
+topic = 'T.V. Series'
 # topic = 'Sports'
-topic = 'Politics'
+# topic = 'Politics'
 # topic = 'Tech'
 # topic = 'World News'
 _tweet_count = 0
@@ -151,14 +151,15 @@ id_file = open('max_id_file.txt','r')
 max_id = int(id_file.read())
 id_file.close()
 
+times = 0	
 # Crawls Turkish tweets
-while _tweet_count < 500:
+while _tweet_count < 10:
 
 	try:
 		if max_id <= 0:
-			tweets = api.search(q="bize seçim",lang="tr")
+			tweets = api.search(q="Game of Thrones",lang="tr")
 		else:
-			tweets = api.search(q="bize seçim",lang="tr",max_id=str(max_id - 1))
+			tweets = api.search(q="Game of Thrones",lang="tr",max_id=str(max_id - 1))
 	except Exception as e:
 		print("Error encontered: ",e)
 		print('Exiting now')
@@ -176,6 +177,12 @@ while _tweet_count < 500:
 		target.write('\n')
 
 	target.close()
+
+	times += 1
+	if times <= 3:
+		print("Sleeping for 2min.... :)")
+		time.sleep(120)
+		print("Woke up :P ... Back to work!!")
 
 print('Retrieved: ',_tweet_count,' tweets')
 print('\nLast max_id: ',max_id)

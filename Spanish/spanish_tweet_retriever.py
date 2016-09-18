@@ -140,11 +140,11 @@ def load_document(tweets, topic, tweet_count):
 	return document, tweet_count, max_id
 
 # init
-# topic = 'T.V. Series'
+topic = 'T.V. Series'
 # topic = 'Sports'
 # topic = 'Politics'
 # topic = 'Tech'
-topic = 'World News'
+# topic = 'World News'
 _tweet_count = 0
 document = []
 

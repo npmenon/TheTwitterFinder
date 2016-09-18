@@ -5,7 +5,11 @@
 		[
 			[
 				"p",
-				"padding"
+				"politicsRegex"
+			],
+			[
+				"loc",
+				"locPatter2〔variable〕"
 			],
 			[
 				"padd",
@@ -510,45 +514,33 @@
 			[
 				"list",
 				"listItem〔argument〕"
-			],
-			[
-				"fun",
-				"function〔keyword〕"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript/index.html",
+			"file": "English/eng_tweet_retriever.py",
 			"settings":
 			{
-				"buffer_size": 1312,
+				"buffer_size": 6949,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript/index.css",
+			"file": "English/tweet_oper.py",
 			"settings":
 			{
-				"buffer_size": 3075,
+				"buffer_size": 1937,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/views/pages/index.ejs",
+			"file": "English/index1_eng.jsonl",
 			"settings":
 			{
-				"buffer_size": 2321,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/public/assets/stylesheets/main.css",
-			"settings":
-			{
-				"buffer_size": 11420,
-				"line_ending": "Windows"
+				"buffer_size": 9042308,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -630,46 +622,47 @@
 	},
 	"expanded_folders":
 	[
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Turkish",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript",
-		"/home/nikhil/solr/solr-6.2.0/server/solr/TwitterCore/conf",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/public",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/public/assets",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/public/assets/stylesheets",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/views",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/views/pages",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/views/partials"
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/English",
+		"/home/nikhil/solr/solr-6.2.0/server/solr/twitterFinder/conf",
+		"/home/nikhil/solr/solr-6.2.0/server/solr/TwitterCore/conf"
 	],
 	"file_history":
 	[
-		"/home/nikhil/solr/solr-6.2.0/server/solr/twitterFinder/conf/solrconfig.xml",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Turkish/max_id_file.txt",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Turkish/tweet_oper.py",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Turkish/turkish_tweet_retirever.py",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Turkish/tweet_history.txt",
 		"/home/nikhil/solr/solr-6.2.0/server/solr/TwitterCore/conf/solrconfig.xml",
 		"/home/nikhil/solr/solr-6.2.0/server/solr/TwitterCore/conf/schema.xml",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Korean/korean_tweet_retriever.py",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Spanish/tweet_oper.py",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Korean/tweet_oper.py",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/English/tweet_oper.py",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Korean/index4_korean.jsonl",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/English/test.jsonl",
+		"/home/nikhil/solr/solr-6.2.0/test_index.jsonl",
+		"/home/nikhil/solr/solr-6.2.0/server/solr/twitterFinder/conf/schema.xml",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Korean/max_id_file.txt",
+		"/home/nikhil/.cache/.fr-QMGupM/schema.xml",
+		"/home/nikhil/solr/solr-6.2.0/index1_eng.jsonl",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/public/assets/stylesheets/main.css",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript/index.html",
+		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript/index.css",
+		"/home/nikhil/solr/solr-6.2.0/server/solr/twitterFinder/conf/solrconfig.xml",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/test_index.jsonl",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Turkish/index2_turkish.jsonl",
-		"/home/nikhil/solr/solr-6.2.0/index1_eng.jsonl",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/English/index1_eng.jsonl",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/English/eng_tweet_retriever.py",
-		"/home/nikhil/solr/solr-6.2.0/server/solr/twitterFinder/conf/schema.xml",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript/sample.js",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Turkish/turkish_tweet_retirever.py",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/English/tweet_oper.py",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Turkish/tweet_history.txt",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Turkish/max_id_file.txt",
 		"/home/nikhil/solr/solr-6.2.0/example/example-DIH/solr/solr/conf/solrconfig.xml",
 		"/home/nikhil/solr/solr-6.2.0/server/solr/solr.xml",
 		"/home/nikhil/Desktop/solr_commands.txt",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript/index.css",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript/index.html",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Spanish/spanish_tweet_retriever.py",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Spanish/max_id_file.txt",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Spanish/tweet_history.txt",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Korean/korean_tweet_retriever.py",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Spanish/index3_spanish.jsonl",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/English/access_keys.json",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Korean/index4_korean.jsonl",
-		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Korean/max_id_file.txt",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Korean/tweet_history.txt",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/Korean/test.py",
 		"/media/nikhil/OS/Users/ADMIN/Documents/GitHub/TheTwitterFinder/English/tweet_history.txt",
@@ -763,14 +756,7 @@
 		"/home/nikhil/Desktop/Py pgms/BinaryTree/convertToChildrenSumTree.py",
 		"/home/nikhil/Desktop/Py pgms/BinaryTree/childrenSum.py",
 		"/home/nikhil/Desktop/Py pgms/BinaryTree/leafCount.py",
-		"/home/nikhil/Desktop/Py pgms/BinaryTree/rootToLeaf.py",
-		"/home/nikhil/Desktop/Py pgms/BinaryTree/mirror.py",
-		"/home/nikhil/Desktop/Py pgms/BinaryTree/height.py",
-		"/home/nikhil/Desktop/Py pgms/BinaryTree/tree_size.py",
-		"/home/nikhil/Desktop/Py pgms/BinaryTree/inorderWithoutRec.py",
-		"/home/nikhil/Desktop/Py pgms/Queue/skeleton.py",
-		"/home/nikhil/Desktop/Py pgms/LL/basicOperations.py",
-		"/home/nikhil/Desktop/Py pgms/Stack/skeleton.py"
+		"/home/nikhil/Desktop/Py pgms/BinaryTree/rootToLeaf.py"
 	],
 	"find":
 	{
@@ -788,6 +774,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Sports",
+			"Tech",
+			"print",
+			"Tech",
+			"T.V. Series",
+			"T.V.",
+			"Tech",
+			"loc\":[",
+			"loc\": [",
+			"location",
+			"/select",
+			"/update",
+			"strings",
+			"text_en",
+			"date",
+			"/select",
+			"df",
+			"date",
+			"df",
+			"<str name=\"df\">_text_</str>",
+			"df",
+			"japanese",
+			"korean",
+			"cjk",
+			"text_tr",
+			"text_es",
+			"text_en",
+			"strings",
 			"media",
 			"grid",
 			"group",
@@ -887,42 +901,15 @@
 			"emoticons\": [",
 			"retweeted",
 			"emoticons\": [",
-			"emoticon\": [",
-			"2016-09-08",
-			"emoticons\": [",
-			"\\u",
-			"emoticons\": [",
-			"\"tweet_emoticons\": [",
-			"/tw/",
-			"tweet_emoticons:^null",
-			"tweet_emoticons",
-			"emoticons:[",
-			"text_en",
-			"tweet_en",
-			"\\u",
-			"print",
-			"retweeted_stat",
-			"print",
-			"retweeted_status",
-			"text",
-			"retweeted_status",
-			"id",
-			"tweet_id",
-			"retweetd_stat",
-			"\"retweeted\":",
-			"retweeted_status",
-			"retweeted\":false",
-			"retweeted\":true",
-			"retweeted",
-			"retweeted:true",
-			"retweet"
+			"emoticon\": ["
 		],
-		"highlight": true,
+		"highlight": false,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"T.V. Series",
 			"-",
 			"'u'",
 			"'u'\\u",
@@ -961,87 +948,53 @@
 			"path": "/home/nikhil/solr/solr-6.2.0/server/solr/twitterFinder"
 		},
 		{
-			"path": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript"
-		},
-		{
 			"path": "/home/nikhil/solr/solr-6.2.0/server/solr/TwitterCore"
-		},
-		{
-			"path": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio"
 		}
 	],
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript/index.html",
+					"file": "English/eng_tweet_retriever.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1312,
+						"buffer_size": 6949,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								499,
-								499
+								4607,
+								4607
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 252.0,
+						"translation.y": 2976.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Small Project - Javascript/index.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3075,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2563,
-								2563
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 3492.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/views/pages/index.ejs",
+					"file": "English/tweet_oper.py",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 2321,
+						"buffer_size": 1937,
 						"regions":
 						{
 						},
@@ -1054,45 +1007,43 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
+							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "/media/nikhil/OS/Users/ADMIN/Documents/GitHub/Nikhil_Portfolio/public/assets/stylesheets/main.css",
+					"buffer": 2,
+					"file": "English/index1_eng.jsonl",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11420,
+						"buffer_size": 9042308,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6695,
-								6695
+								8482552,
+								8482552
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 9652.0,
+						"translation.y": 2376570.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1191,9 +1142,10 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 266.0,
+	"side_bar_width": 249.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
+		"max_columns": 2
 	}
 }

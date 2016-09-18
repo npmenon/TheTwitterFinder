@@ -8,6 +8,8 @@ def topic_count(fname):
 
 	count = 0
 
+	print("\n########Spanish Tweet Count##########\n")
+
 	politicsRegex = re.compile(r'\"topic\":\s?\"Politics\"')
 	match = politicsRegex.findall(tweets)
 	count += len(match)
@@ -58,7 +60,7 @@ def tweets(fname):
 	# "tweet_loc": "[37.090240, -95.712891]"
 
 	locPatter2 = re.compile(r'(\"tweet_loc\":\s?)(\[)(\-?\d+\.\d+)(\,\s?)(\-?\d+\.\d+)(\])')
-	match = locPatter2.findall(text2)
+	# match = locPatter2.findall(text2)
 	# print(match)
 	text = locPatter2.sub(r'\1"\5\4\3"',text2)
 	# print(text)
@@ -71,5 +73,5 @@ def tweets(fname):
 
 	print('Successful....')
 
-print(topic_count("index3_spanish.jsonl"))
-# print(tweets("index3_spanish.jsonl"))
+# topic_count("index3_spanish.jsonl")
+tweets("index3_spanish.jsonl")
