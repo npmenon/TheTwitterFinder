@@ -139,7 +139,8 @@ def load_document(tweets, topic, tweet_count):
 			tweet_data['tweet_date'] = (new_date)	
 
 			# appending the json to a document
-			document.append(json.dumps(tweet_data, default=date_handler))
+			document.append(json.dumps(tweet_data, default=date_handler, ensure_ascii=False))
+
 
 	return document, tweet_count, max_id
 
@@ -160,15 +161,16 @@ id_file.close()
 times = 0	
 total_tweets = 0
 error = False
+no_tweet_count = 0
 # english
 while True:
 	_tweet_count = 0
-	while _tweet_count < 1000:
+	while _tweet_count < 500:
 		try:
 			if max_id <= 0:
-				tweets = api.search(q="apple iphone",lang="en")
+				tweets = api.search(q="#GameofThrones", lang="en")
 			else:
-				tweets = api.search(q="apple iphone",lang="en",max_id=str(max_id - 1))
+				tweets = api.search(q="#GameofThrones", lang="en", max_id=str(max_id - 1))
 		except Exception as e:
 			print("Error encontered: ",e)
 			print('Exiting now')
@@ -178,6 +180,9 @@ while True:
 		if tweets:
 			document, _tweet_count, max_id = load_document(tweets,topic, _tweet_count)
 		else:
+			no_tweet_count += 1
+			if no_tweet_count == 10:
+				break
 			print('No tweets')
 
 		target = open('index1_eng.jsonl','a')
@@ -189,10 +194,11 @@ while True:
 		target.close()
 
 	times += 1
-	if times <= 5 and not error:
-		total_tweets += _tweet_count
-		print("Got {} tweets...Going to sleep for 12min.... :)".format(_tweet_count))
-		time.sleep(800)
+	total_tweets += _tweet_count
+	if times <= 7 and not error:
+		no_tweet_count = 0		
+		print("Got {} tweets...Going to sleep for 16min.... :)".format(_tweet_count))
+		time.sleep(1000)
 		print("Woke up :P ... Back to collecting more tweets!!")
 	else:
 		break
@@ -230,7 +236,7 @@ def stream_twitter():
 	# twitterStream.filter(track=['#SDF','@syrianrefugeeun','#PrayForSyria','#SyrianRefugees'])
 	# twitterStream.filter(track=['#usopen'])
 	# twitterStream.filter(track=['#apple'])
-	twitterStream.filter(track=['#usopen'])
+	twitterStream.filter(track=['#GameofThrones'])
 	return Streamer.streamed_data
 
 

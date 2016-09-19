@@ -76,17 +76,23 @@ def tweets(fname):
 
 def separate_emoticons(fname):
     with open(fname) as f:
-        tweets = f.read()
+        tweets = json.load(f,encoding="utf-8")
+        print(tweets)
 
-# "tweet_emoticons": ["\ud83d\ude04\u270c"]
-    emoticon_pattern = re.compile(r'(\"tweet_emoticons\":\s?\[")((\u\w)+)("\])')
-    match = emoticon_pattern.findall(tweets)
+    # "tweet_emoticons": ["\ud83d\ude04\u270c"]
 
-    # emoticon_pattern.sub('')
+    
 
-    print(match)
+    # emoticon_pattern = re.compile(r'("tweet_emoticons":\s?\[")(.*)("\])')
+    # match = emoticon_pattern.findall(tweets)
+
+    
+    # text = emoticon_pattern.sub(r'"tweet_emoticons": [\2]',tweets)
+
+    # print(match)
+    # print(text)
 
 
-# topic_count("index1_eng.jsonl")
-tweets("index1_eng.jsonl")
+topic_count("index1_eng.jsonl")
+# tweets("index1_eng.jsonl")
 # separate_emoticons("temp.jsonl")

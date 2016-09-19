@@ -165,8 +165,8 @@ def load_document(tweets, topic, tweet_count):
 # topic = 'T.V. Series'
 # topic = 'Sports'
 # topic = 'Politics'
-topic = 'Tech'
-# topic = 'World News'
+# topic = 'Tech'
+topic = 'World News'
 _tweet_count = 0
 document = []
 
@@ -176,12 +176,12 @@ max_id = int(id_file.read())
 id_file.close()
 
 # Korean
-while _tweet_count < 100:
+while _tweet_count < 500:
 	try:
 		if max_id <= 0:
-			tweets = api.search(q="애플 아이폰",lang="ko")
+			tweets = api.search(q="왕좌의 게임",lang="ko")
 		else:
-			tweets = api.search(q="애플 아이폰",lang="ko",max_id=str(max_id - 1))
+			tweets = api.search(q="왕좌의 게임",lang="ko",max_id=str(max_id - 1))
 	except Exception as e:
 		print("Error encontered: ",e)
 		print('Exiting now')

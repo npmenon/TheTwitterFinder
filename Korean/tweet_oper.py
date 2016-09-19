@@ -74,5 +74,5 @@ def tweets(fname):
 
 	print('Successful....')
 
-# print(topic_count("index4_korean.jsonl"))
-print(tweets("index4_korean.jsonl"))
+# topic_count("index4_korean.jsonl")
+tweets("index4_korean.jsonl")
