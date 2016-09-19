@@ -79,67 +79,67 @@ def load_document(tweets, topic, tweet_count):
 	for tweet in tweets:
 
 		# to remove retweets
-		try:
-			if tweet.retweeted_status:
-				continue
-		except Exception:
-			tweet_count += 1
+		# try:
+		# 	if tweet.retweeted_status:
+		# 		continue
+		# except Exception:
+		tweet_count += 1
 
-			tweet_data = {}
-			tweet_data['topic'] = topic
-			tweet_data['tweet_lang'] = tweet.lang
-			tweet_data['tweet_text'] = tweet.text
+		tweet_data = {}
+		tweet_data['topic'] = topic
+		tweet_data['tweet_lang'] = tweet.lang
+		tweet_data['tweet_text'] = tweet.text
 
-			if tweet.lang == 'en':
-				tweet_data['text_en'],tweet_data['tweet_emoticons'] = tweet_filter(tweet.text)
-				tweet_data['text_en'] = tweet_data['text_en'].strip()
+		if tweet.lang == 'en':
+			tweet_data['text_en'],tweet_data['tweet_emoticons'] = tweet_filter(tweet.text)
+			tweet_data['text_en'] = tweet_data['text_en'].strip()
 
-			elif tweet.lang == 'es':
-				tweet_data['text_es'],tweet_data['tweet_emoticons'] = tweet_filter(tweet.text)
-				tweet_data['text_es'] = tweet_data['text_es'].strip()
+		elif tweet.lang == 'es':
+			tweet_data['text_es'],tweet_data['tweet_emoticons'] = tweet_filter(tweet.text)
+			tweet_data['text_es'] = tweet_data['text_es'].strip()
 
-			elif tweet.lang == 'tr':
-				tweet_data['text_tr'],tweet_data['tweet_emoticons'] = tweet_filter(tweet.text)
-				tweet_data['text_tr'] = tweet_data['text_tr'].strip()
-				
-			elif tweet.lang == 'ko' :
-				tweet_data['text_ko'],tweet_data['tweet_emoticons'] = tweet_filter(tweet.text)
-				tweet_data['text_ko'] = tweet_data['text_ko'].strip()
-
-			# retrieving the urls
-			tweet_data['tweet_urls'] = []
-			for jsonurl in tweet.entities['urls']:
-				tweet_data['tweet_urls'].append(jsonurl["expanded_url"])
-
-			# retrieving the hashtags
-			tweet_data['tweet_hashtags'] = []
-			for jsontags in tweet.entities['hashtags']:
-				tweet_data['tweet_hashtags'].append(jsontags["text"])
-
-			# retrieving user mentions
-			tweet_data['tweet_mentions'] = []
-			for jsonmention in tweet.entities['user_mentions']:
-				tweet_data['tweet_mentions'].append(jsonmention["name"])
-
-			tweet_data['tweet_loc'] = []
-			if tweet.coordinates:
-				tweet_data['tweet_loc'] = tweet.coordinates["coordinates"]
+		elif tweet.lang == 'tr':
+			tweet_data['text_tr'],tweet_data['tweet_emoticons'] = tweet_filter(tweet.text)
+			tweet_data['text_tr'] = tweet_data['text_tr'].strip()
 			
-			# rounding off time
-			tdatetime = tweet.created_at
-			minute  = tdatetime.minute
-			second = tdatetime.second
+		elif tweet.lang == 'ko' :
+			tweet_data['text_ko'],tweet_data['tweet_emoticons'] = tweet_filter(tweet.text)
+			tweet_data['text_ko'] = tweet_data['text_ko'].strip()
 
-			if minute < 30:
-				new_date = tdatetime - datetime.timedelta(minutes=minute,seconds=second)
-			else:
-				new_date = tdatetime - datetime.timedelta(minutes=minute,seconds=second)
-				new_date = new_date + datetime.timedelta(hours=1)
+		# retrieving the urls
+		tweet_data['tweet_urls'] = []
+		for jsonurl in tweet.entities['urls']:
+			tweet_data['tweet_urls'].append(jsonurl["expanded_url"])
 
-			tweet_data['tweet_date'] = (new_date)	
+		# retrieving the hashtags
+		tweet_data['tweet_hashtags'] = []
+		for jsontags in tweet.entities['hashtags']:
+			tweet_data['tweet_hashtags'].append(jsontags["text"])
 
-			# appending the json to a document
-			document.append(json.dumps(tweet_data, default=date_handler, ensure_ascii=False))
+		# retrieving user mentions
+		tweet_data['tweet_mentions'] = []
+		for jsonmention in tweet.entities['user_mentions']:
+			tweet_data['tweet_mentions'].append(jsonmention["name"])
+
+		tweet_data['tweet_loc'] = []
+		if tweet.coordinates:
+			tweet_data['tweet_loc'] = tweet.coordinates["coordinates"]
+		
+		# rounding off time
+		tdatetime = tweet.created_at
+		minute  = tdatetime.minute
+		second = tdatetime.second
+
+		if minute < 30:
+			new_date = tdatetime - datetime.timedelta(minutes=minute,seconds=second)
+		else:
+			new_date = tdatetime - datetime.timedelta(minutes=minute,seconds=second)
+			new_date = new_date + datetime.timedelta(hours=1)
+
+		tweet_data['tweet_date'] = (new_date)	
+
+		# appending the json to a document
+		document.append(json.dumps(tweet_data, default=date_handler, ensure_ascii=False))
 
 
 	return document, tweet_count, max_id
@@ -165,12 +165,12 @@ no_tweet_count = 0
 # english
 while True:
 	_tweet_count = 0
-	while _tweet_count < 500:
+	while _tweet_count < 5000:
 		try:
 			if max_id <= 0:
-				tweets = api.search(q="#GameofThrones", lang="en")
+				tweets = api.search(q="#GameofThrones", lang="en",count=100)
 			else:
-				tweets = api.search(q="#GameofThrones", lang="en", max_id=str(max_id - 1))
+				tweets = api.search(q="#GameofThrones", lang="en", max_id=str(max_id - 1),count=100)
 		except Exception as e:
 			print("Error encontered: ",e)
 			print('Exiting now')
@@ -195,7 +195,7 @@ while True:
 
 	times += 1
 	total_tweets += _tweet_count
-	if times <= 7 and not error:
+	if times <= 5 and not error:
 		no_tweet_count = 0		
 		print("Got {} tweets...Going to sleep for 16min.... :)".format(_tweet_count))
 		time.sleep(1000)

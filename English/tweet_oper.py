@@ -93,6 +93,6 @@ def separate_emoticons(fname):
     # print(text)
 
 
-topic_count("index1_eng.jsonl")
-# tweets("index1_eng.jsonl")
+# topic_count("index1_eng.jsonl")
+tweets("index1_eng.jsonl")
 # separate_emoticons("temp.jsonl")
