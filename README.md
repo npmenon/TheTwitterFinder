@@ -1,1 +1,2 @@
-An app that performs information retrieval using Solr on twitter data
+##The Twitter Finder
+Contains Scripts to retrieve tweets in English, Spanish, Turkish
