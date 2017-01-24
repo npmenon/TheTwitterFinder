@@ -1,2 +1,2 @@
 ##The Twitter Finder
-Contains Scripts to retrieve tweets in English, Spanish, Turkish
+Contains Scripts to retrieve tweets in English, Spanish, Turkish, Korean
